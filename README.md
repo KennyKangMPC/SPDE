@@ -1,3 +1,7 @@
-# Simulation of different SPDEs
+# Simulation of SPDEs
 
-Synchronize: simulations of two solutions to the KPZ equation, corresponding to two different initial conditions, which synchronize exponentially fast.
+We use a Galerkin or finite-difference approximation to solve SPDEs with an
+implicit Euler scheme.
+
+Approximations include:
+ - 
