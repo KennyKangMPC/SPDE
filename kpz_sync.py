@@ -95,8 +95,8 @@ lines_b,  = ax.plot([],[], lw = 2)
 plt.title("Synchronization") 
 
 # We let the animation go.
-ani       = animation.FuncAnimation(fig, animate, frames=300, interval = 70, blit = True)
-ani.save(filename = 'double_kpz.mp4', extra_args=['-vcodec', 'libx264'], bitrate = 7000)
+ani       = animation.FuncAnimation(fig, animate, frames=250, interval = 70, blit = True)
+ani.save(filename = 'kpz_synchronization.mp4', extra_args=['-vcodec', 'libx264'], bitrate = 17000)
 
 
 # INSTRUCTION FOR PUTTING VIDEO IN PRESENTATION.

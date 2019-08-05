@@ -42,7 +42,7 @@ def animate(i):
 	return [im] + [time_text]
 
 # Number of eigenfuntions
-N = 30
+N = 40
 
 # Time discretisation
 delta_t = 1/1000
@@ -54,7 +54,7 @@ for i in range(0, N):
 		dd[i, j] = 1/(1+((i+1)**2+ (j+1)**2)*delta_t)
 
 # Space discretisation
-space_pts = 150
+space_pts = 300
 space = np.linspace(0.0, np.pi + 1/(space_pts-10), space_pts)
 
 # Define the eigenfunctions in 1D:
@@ -80,7 +80,7 @@ im         = plt.imshow(she_sample.value, vmin = -1, vmax = 1)
 
 # We let the animation go.
 ani        = animation.FuncAnimation(fig, animate, frames=250,interval = 2, blit=True)
-ani.save(filename = '2d_she.mp4', fps=15, extra_args=['-vcodec', 'libx264'], bitrate = 8000)
+ani.save(filename = '2d_she.mp4', fps=15, extra_args=['-vcodec', 'libx264'], bitrate = 17000)
 
 # INSTRUCTION FOR PUTTING VIDEO IN PRESENTATION.
 
