@@ -4,7 +4,7 @@
 - We use a Galerkin approximation to simulate the stochastic heat equation with
   additive noise:
   $$ \partial_t u = \Delta u + \xi $$
-  for space-time white noise \(\xi\).
+  for space-time white noise $\xi$.
 
 - We simulate a sample path of the Brownian sheet
 
