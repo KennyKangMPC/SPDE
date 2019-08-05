@@ -1,4 +1,4 @@
-# Simulation of some SPDEs
+# Simulation of some SPDEs & related processes
 
 
 - We use a Galerkin approximation to simulate the stochastic heat equation with
