@@ -19,4 +19,9 @@
 
   ![alt text](kpz_synchronization.gif)
 
+- Finally, we simulate the ballistic deposition growth process (linked to a famous
+  conjecture regarding the KPZ equation: https://arxiv.org/pdf/1106.1596.pdf)
+
+  ![alt text](brownian_sheet.gif)
+
 
