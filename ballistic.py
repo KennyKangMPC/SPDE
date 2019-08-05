@@ -7,6 +7,7 @@ import matplotlib.animation as animation
 from matplotlib import colors
 from IPython import embed
 from os import path
+import sys
 
 class ballistic:
 	"""
@@ -62,7 +63,7 @@ class ballistic:
 def animate(i):
 	global bal, ax, fig, time_text
 	# Real time is:
-	ani_time = (i/300)**3
+	ani_time = (i/240)**3
 	# We do as many steps as needed for the next particle
 	# to arrive after time ani_time.
 	while (ani_time >  bal.cur_time ):
@@ -106,8 +107,8 @@ colmap    = plt.get_cmap('plasma')
 ax.set_xticks([])
 ax.set_yticks([])
 # We let the animation go.
-ani       = animation.FuncAnimation(fig, animate, frames=10000,interval = 1, blit=True)
-ani.save(filename = 'ballistic.mp4', fps=150, extra_args=['-vcodec', 'libx264'], bitrate = 17000)
+ani       = animation.FuncAnimation(fig, animate, frames=8000,interval = 1, blit=True)
+ani.save(filename = 'ballistic.mp4', fps=150, extra_args=['-vcodec', 'libx264'], bitrate = 20000)
 
 
 # INSTRUCTION FOR PUTTING VIDEO IN PRESENTATION.

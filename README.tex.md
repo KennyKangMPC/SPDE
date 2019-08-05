@@ -5,6 +5,7 @@
   additive noise:
   $$ \partial_t u = \Delta u + \xi $$
   for space-time white noise $\xi$:
+  
   ![alt text](2d_she.gif)
 
 - We simulate a sample path of the Brownian sheet:
@@ -15,6 +16,7 @@
   for space time white noise $\xi$ and two initial conditions $h_1(0), h_2(0)$
   and we can observe that the solutions synchronize (see
   https://arxiv.org/abs/1907.06278):
+
   ![alt text](kpz_synchronization.gif)
 
 
