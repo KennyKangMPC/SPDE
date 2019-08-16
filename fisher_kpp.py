@@ -38,7 +38,7 @@ class fkpp:
 		self.state_b = x_1
 
 		# We initialize the spatial noise variable.
-		self.noise =  np.random.normal(size = (space_pts) , scale = np.sqrt(1/delta_x))
+		self.noise =  0*np.random.normal(size = (space_pts) , scale = np.sqrt(1/delta_x)) + 1
 
 
 	def do_step(self):
@@ -106,7 +106,7 @@ lines_b,  = ax.plot([],[], lw = 2)
 plt.title("FKPP Equation") 
 
 # We let the animation go.
-ani       = animation.FuncAnimation(fig, animate, frames=700, interval = 70, blit = True)
+ani       = animation.FuncAnimation(fig, animate, frames=1200, interval = 70, blit = True)
 ani.save(filename = 'fisher_kpp.mp4', extra_args=['-vcodec', 'libx264'], bitrate = 20000)
 
 
