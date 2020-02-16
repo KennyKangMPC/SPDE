@@ -39,7 +39,8 @@ class fkpp:
 
 		# We initialize the spatial noise variable.
 		self.noise =  0*np.random.normal(size = (space_pts) , scale = np.sqrt(1/delta_x)) + 1
-
+		for i in range(0,int(space_pts/4):
+			self.noise[i]=-0.5
 
 	def do_step(self):
 
