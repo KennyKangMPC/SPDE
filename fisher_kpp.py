@@ -1,15 +1,4 @@
 
-# We simulate the Brownian sheet on [0, T] x [0, pi]
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from matplotlib import colors
-from IPython import embed
-from os import path
-
-
 
 # Solve the KPZ equation for large times
 # And two different initial conditions
@@ -39,8 +28,10 @@ class fkpp:
 
 		# We initialize the spatial noise variable.
 		self.noise =  0*np.random.normal(size = (space_pts) , scale = np.sqrt(1/delta_x)) + 1
-		for i in range(0,int(space_pts/4):
-			self.noise[i]=-0.5
+		for i in range(0,int(space_pts/4)):
+			self.noise[i]=0.5*(delta_x*i - delta_x*space_pts/4)
+		for i in range(int(space_pts/4), space_pts):
+			self.noise[i]=(delta_x*i - delta_x*space_pts/4)
 
 	def do_step(self):
 
@@ -50,7 +41,7 @@ class fkpp:
 
 		self.state_b = np.dot(resolvent, self.state_b - (np.multiply(np.multiply( \
 			self.state_b, self.state_b-1), self.noise))*delta_t )
-		#self.state = np.dot(resolvent, self.state + np.random.normal(size = (space_pts), scale = np.sqrt(delta_t/delta_x) ) ) 
+		#self.state = np.dot(resolvent, self.state + np.random.normal(size = (space_pts), scale = np.sqrt(delta_t/delta_x) ) )
 
 def animate(i):
 	# Real time is:
@@ -64,14 +55,15 @@ def animate(i):
 	time_text.set_text("Time = {:2.3f}".format(ani_time) )
 	# We print the step we are in:
 	sys.stdout.flush()
-	sys.stdout.write("\r Step = {}".format(i))
+	sys.stdout.write("\r Step = {}, Value = {}, Derivative = {}".format(i, fkpp_sample.state_a[middle], (delta_x**(-2))*(fkpp_sample.state_a[middle-1]+fkpp_sample.state_a[middle+1]-2*fkpp_sample.state_a[middle])))
+	#sys.stdout.write("\r Step = {}, Value = {}, Derivative = {}".format(i, 1,2))
 	# And we do the next step:
 	fkpp_sample.do_step()
 	return [lines_a,] + [lines_b,] + [time_text,]
 
 # Space-Time discretisation
 delta_t = 1/180
-delta_x = 1/100
+delta_x = 1/150
 
 # Box size:
 L = 10
@@ -79,6 +71,7 @@ L = 10
 # Space discretisation
 space = np.arange(0.0, 2*np.pi*L + 0.001, delta_x)
 space_pts = len(space)
+middle = int(space_pts/4)-1
 
 # We create a sample path
 # with initial condition x_0, x_1:
@@ -104,11 +97,12 @@ ax        = plt.axes(xlim=(0, 2*np.pi*L), ylim = (-0.2, 1.2))
 time_text = ax.text(0.05, 0.95,'',horizontalalignment='left',verticalalignment='top', transform=ax.transAxes)
 lines_a,  = ax.plot([],[], lw = 2)
 lines_b,  = ax.plot([],[], lw = 2)
-plt.title("FKPP Equation") 
+plt.title("FKPP Equation")
 
 # We let the animation go.
-ani       = animation.FuncAnimation(fig, animate, frames=1200, interval = 70, blit = True)
-ani.save(filename = 'fisher_kpp.mp4', extra_args=['-vcodec', 'libx264'], bitrate = 20000)
+ani       = animation.FuncAnimation(fig, animate, frames=2000, interval = 70, blit = True)
+
+ani.save(filename = 'fisher_kpp.html', extra_args=['-vcodec', 'libx264'], bitrate = 20000)
 
 
 # INSTRUCTION FOR PUTTING VIDEO IN PRESENTATION.
